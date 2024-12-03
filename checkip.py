@@ -7,7 +7,7 @@ password = os.environ["PASSWORD"]
 
 iosv_l2_s1 = {
     "device_type": "cisco_ios",
-    "ip": "sandbox-iosxr-1.cisco.com",
+    "ip": "sandbox-iosxr-1.cisco.com test",
     "username": user,
     "password": password,
 }

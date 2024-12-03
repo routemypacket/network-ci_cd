@@ -16,5 +16,5 @@ steps:
 trigger:
   branch:
     exclude:
-    - main
+  #  - main
     - master

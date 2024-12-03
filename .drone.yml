@@ -2,49 +2,19 @@ kind: pipeline
 type: docker
 name: Testing Python CI/CD
 
+
 steps:
-- name: Black Code Format Check
-  image: johnbreth/netauto
-  commands:
-  - black . --check
-
-- name: Batfish Prechecks
-  image: johnbreth/netauto
-  commands:
-  - python batfishcheck.py
-
-- name: Precheck Configuration Diff
-  image: johnbreth/netauto
+- name: Install and deploy
+  image: python
   environment:
-    PASSWORD:
-      from_secret: PASSWORD
-    USER:
-      from_secret: USER
-  commands:
-  - python build.py --dry_run
-
-- name: Deploy Configuration
-  image: johnbreth/netauto
-  environment:
-    PASSWORD:
-      from_secret: PASSWORD
-    USER:
-      from_secret: USER
-  commands:
-  - python build.py --no_dry_run
-  when:
-    branch:
-    - master
-    - main
-
-- name: Check IP Interfaces
-  image: johnbreth/netauto
-  environment:
-    PASSWORD:
-      from_secret: PASSWORD
-    USER:
-      from_secret: USER
+    MY_PASS:
+      from_secret: MY_PASS
   commands:
   - pip3 install -r requirements.txt
-  - python3 checkip.py
+  - python3 bat.py
 
+trigger:
+  branch:
+    exclude:
+    - main
+    - master

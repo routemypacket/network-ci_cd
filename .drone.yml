@@ -11,7 +11,7 @@ steps:
       from_secret: MY_PASS
   commands:
   - pip3 install -r requirements.txt
-  - python3 bat.py
+  - python3 checkip.py
 
 trigger:
   branch:

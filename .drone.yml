@@ -12,6 +12,7 @@ steps:
   commands:
   - pip3 install -r requirements.txt
   - python3 checkip.py
+  - python3 test.py
 
 trigger:
   branch:

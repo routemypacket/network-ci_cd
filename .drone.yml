@@ -4,11 +4,15 @@ name: Testing Python CI/CD
 
 
 steps:
-- name: Install and deploy
+- name: Black Code Format Check
   image: deadtree101/netauto
-  environment:
-    MY_PASS:
-      from_secret: MY_PASS
+  commands:
+  - black . --check
+- name: Check IP Interfaces
+  image: deadtree101/netauto
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
   commands:
 # - pip3 install -r requirements.txt
   - python3 checkip.py

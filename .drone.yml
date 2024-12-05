@@ -5,14 +5,13 @@ name: Testing Python CI/CD
 
 steps:
 - name: Install and deploy
-  image: python
+  image: deadtree101/netauto
   environment:
     MY_PASS:
       from_secret: MY_PASS
   commands:
-  - pip3 install -r requirements.txt
+# - pip3 install -r requirements.txt
   - python3 checkip.py
-  - python3 test.py
 
 trigger:
   branch:

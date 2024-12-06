@@ -16,7 +16,7 @@ steps:
 - name: Batfish Prechecks
   image: deadtree101/netauto
   commands:
-  - python batfishcheck.py
+  - python batfish_updated.py
 
 - name: Check IP Interfaces
   image: deadtree101/netauto
@@ -31,3 +31,5 @@ trigger:
   branch:
     exclude:
     - master
+
+#test run

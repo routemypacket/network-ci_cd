@@ -11,7 +11,7 @@ steps:
 - name: check-python-packages
     image: deadtree101/netauto:latest
     commands:
-      - python -m pip list
+    - python -m pip list
       
 - name: Batfish Prechecks
   image: deadtree101/netauto

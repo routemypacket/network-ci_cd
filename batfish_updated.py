@@ -76,7 +76,7 @@ def main():
     SNAPSHOT_DIR = "./snapshots"
 
     # Configure Batfish session
-    bf_session.host = "127.0.0.1"  # Replace with your Batfish server's IP
+    bf_session.host = "host.docker.internal"  # Replace with your Batfish server's IP
     bf_session.set_network(NETWORK_NAME)
 
     # Initialize snapshot

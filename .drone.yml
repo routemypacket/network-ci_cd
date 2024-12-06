@@ -8,6 +8,11 @@ steps:
 #  image: deadtree101/netauto
 #  commands:
 #  - black . --check
+- name: check-python-packages
+    image: deadtree101/netauto:latest
+    commands:
+      - python -m pip list
+      
 - name: Batfish Prechecks
   image: deadtree101/netauto
   commands:

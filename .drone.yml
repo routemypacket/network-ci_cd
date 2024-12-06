@@ -13,12 +13,12 @@ steps:
   commands:
   - python -m pip list
 
-- name: debug-batfish-connection
-  image: deadtree101/netauto:latest
-  commands:
-  - curl -v http://127.0.0.1:9996/v2/version || echo "Connection to localhost failed"
-  - curl -v http://host.docker.internal:9996/v2/version || echo "Connection to host.docker.internal failed"
-  - curl -v http://172.17.0.1:9996/v2/version || echo "Connection to Docker host IP failed"
+#- name: debug-batfish-connection
+#  image: deadtree101/netauto:latest
+#  commands:
+#  - curl -v http://127.0.0.1:9996/v2/version || echo "Connection to localhost failed"
+#  - curl -v http://host.docker.internal:9996/v2/version || echo "Connection to host.docker.internal failed"
+#  - curl -v http://172.17.0.1:9996/v2/version || echo "Connection to Docker host IP failed"
       
 - name: Batfish Prechecks
   image: deadtree101/netauto

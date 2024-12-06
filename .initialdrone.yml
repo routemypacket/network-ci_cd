@@ -13,6 +13,7 @@ steps:
   commands:
   - python batfishcheck.py
 
+#test
 
 - name: Precheck Configuration Diff
   image: johnbreth/netauto

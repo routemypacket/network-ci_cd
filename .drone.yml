@@ -4,10 +4,15 @@ name: Testing Python CI/CD
 
 
 steps:
-- name: Black Code Format Check
+#- name: Black Code Format Check
+#  image: deadtree101/netauto
+#  commands:
+#  - black . --check
+- name: Batfish Prechecks
   image: deadtree101/netauto
   commands:
-  - black . --check
+  - python batfishcheck.py
+
 - name: Check IP Interfaces
   image: deadtree101/netauto
 #  environment:

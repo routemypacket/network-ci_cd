@@ -16,7 +16,6 @@ steps:
 - name: check-batfish-connectivity
   image: alpine/curl
   commands:
-  - python -m site
   - curl -v http://host.docker.internal:9996/v2/version || exit 1
 
 
@@ -45,3 +44,5 @@ trigger:
   branch:
     exclude:
     - master
+
+#test

@@ -13,13 +13,13 @@ steps:
 #  commands:
 #  - python -m pip list
 
-- name: debug-python-environment
-  image: deadtree101/netauto
-  network_mode: host
-  commands:
-    - python --version
-    - python -m pip list
-    - curl -v http://192.168.0.130:9996/v2/version
+#- name: debug-python-environment
+#  image: deadtree101/netauto
+#  network_mode: host
+#  commands:
+#    - python --version
+#    - python -m pip list
+#    - curl -v http://192.168.0.130:9996/v2/version
 
 #- name: debug-batfish-connectivity
 #  image: alpine/curl
@@ -40,8 +40,9 @@ steps:
   image: deadtree101/netauto
   network_mode: host
   commands:
-  - python batfish_updated.py || echo "Script failed, printing debug info"
-  - python -m traceback batfish_updated.py
+  - python batfish_updated.py
+#  - python batfish_updated.py || echo "Script failed, printing debug info"
+#  - python -m traceback batfish_updated.py
 
 - name: Check IP Interfaces
   image: deadtree101/netauto

@@ -38,5 +38,3 @@ trigger:
   branch:
     exclude:
     - master
-
-#test run

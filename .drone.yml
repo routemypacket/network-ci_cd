@@ -12,7 +12,12 @@ steps:
   image: deadtree101/netauto
   commands:
   - python -m pip list
+- name: check-batfish-connectivity
+  image: alpine/curl
+  commands:
+  - curl -v http://host.docker.internal:9996/v2/version || exit 1
 
+  
 #- name: debug-batfish-connection
 #  image: deadtree101/netauto:latest
 #  commands:

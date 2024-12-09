@@ -38,6 +38,7 @@ steps:
       
 - name: Batfish Prechecks
   image: deadtree101/netauto
+  network_mode: host
   commands:
   - python batfish_updated.py || echo "Script failed, printing debug info"
   - python -m traceback batfish_updated.py

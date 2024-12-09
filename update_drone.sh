@@ -38,3 +38,10 @@ docker run \
   --detach=true \
   --name=drone-runner \
   drone/drone-runner-docker:1
+
+
+curl -X PATCH \
+  -H "Authorization: token <your-github-token>" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/<your-username>/<your-repo>/hooks/<hook-id> \
+  -d '{"config": {"url": "https://<new-ngrok-url>/hook"}}'

@@ -43,5 +43,5 @@ docker run \
 curl -X PATCH \
   -H "Authorization: token <your-github-token>" \
   -H "Accept: application/vnd.github+json" \
-  https://api.github.com/repos/<your-username>/<your-repo>/hooks/<hook-id> \
-  -d '{"config": {"url": "https://<new-ngrok-url>/hook"}}'
+  https://api.github.com/repos/routemypacket/network-ci_cd/settings/hooks/516620297 \
+  -d '{"config": {"url": "https://$NEW_URL/hook"}}'

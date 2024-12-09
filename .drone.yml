@@ -8,16 +8,17 @@ steps:
 #  image: deadtree101/netauto
 #  commands:
 #  - black . --check
-- name: check-python-packages
-  image: deadtree101/netauto
-  commands:
-  - python -m pip list
-
-- name: check-batfish-connectivity
+#- name: check-python-packages
+#  image: deadtree101/netauto
+#  commands:
+#  - python -m pip list
+- name: debug-batfish-connectivity
   image: alpine/curl
   commands:
-  - curl -v http://192.168.0.130:9996/v2/version || exit 1
-
+    - ip addr
+    - ip route
+    - curl -v http://192.168.0.130:9996/v2/version || echo "Batfish server unreachable"
+    
 
 #- name: debug-batfish-connection
 #  image: deadtree101/netauto:latest

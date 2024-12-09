@@ -12,12 +12,20 @@ steps:
 #  image: deadtree101/netauto
 #  commands:
 #  - python -m pip list
-- name: debug-batfish-connectivity
-  image: alpine/curl
+
+- name: debug-python-environment
+  image: deadtree101/netauto
   commands:
-    - ip addr
-    - ip route
-    - curl -v http://192.168.0.130:9996/v2/version || echo "Batfish server unreachable"
+    - python --version
+    - python -m pip list
+    - curl -v http://192.168.0.130:9996/v2/version
+
+#- name: debug-batfish-connectivity
+#  image: alpine/curl
+#  commands:
+#   - ip addr
+#   - ip route
+#   - curl -v http://192.168.0.130:9996/v2/version || echo "Batfish server unreachable"
     
 
 #- name: debug-batfish-connection

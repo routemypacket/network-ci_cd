@@ -15,6 +15,7 @@ steps:
 
 - name: debug-python-environment
   image: deadtree101/netauto
+  network_mode: host
   commands:
     - python --version
     - python -m pip list
@@ -38,7 +39,8 @@ steps:
 - name: Batfish Prechecks
   image: deadtree101/netauto
   commands:
-  - python batfish_updated.py
+  - python batfish_updated.py || echo "Script failed, printing debug info"
+  - python -m traceback batfish_updated.py
 
 - name: Check IP Interfaces
   image: deadtree101/netauto

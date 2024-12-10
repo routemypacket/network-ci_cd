@@ -13,14 +13,49 @@ steps:
 #  commands:
 #  - python -m pip list
 
-#- name: debug-python-environment
-#  image: deadtree101/netauto
-#  network_mode: host
-#  commands:
-#    - python --version
-#    - python -m pip list
-#    - curl -v http://192.168.0.130:9996/v2/version
+- name: debug-python-environment
+  image: deadtree101/netauto
+  network_mode: host
+  commands:
+    - python --version
+    - python -m pip list
 
+- name: Batfish Prechecks
+  image: deadtree101/netauto
+  network_mode: host
+  commands:
+  - python batfish_updated.py
+#  - python batfish_updated.py || echo "Script failed, printing debug info"
+#  - python -m traceback batfish_updated.py
+
+
+- name: Populate Nautobot from sandbox iosXR device
+  image: deadtree101/netauto
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
+  commands:
+# - pip3 install -r requirements.txt
+  - python3 /nautobot_code/populate_nautobot_device.py
+
+
+- name: Check IP Interfaces of sandbox iosXR device
+  image: deadtree101/netauto
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
+  commands:
+# - pip3 install -r requirements.txt
+  - python3 checkip.py
+
+trigger:
+  branch:
+    exclude:
+    - master
+
+
+#    Legacy testing of tasks such as batfish etc:
+  
 #- name: debug-batfish-connectivity
 #  image: alpine/curl
 #  commands:
@@ -36,25 +71,3 @@ steps:
 #  - curl -v http://host.docker.internal:9996/v2/version || echo "Connection to host.docker.internal failed"
 #  - curl -v http://172.17.0.1:9996/v2/version || echo "Connection to Docker host IP failed"
       
-- name: Batfish Prechecks
-  image: deadtree101/netauto
-  network_mode: host
-  commands:
-  - python batfish_updated.py
-#  - python batfish_updated.py || echo "Script failed, printing debug info"
-#  - python -m traceback batfish_updated.py
-
-- name: Check IP Interfaces
-  image: deadtree101/netauto
-#  environment:
-#    MY_PASS:
-#      from_secret: MY_PASS
-  commands:
-# - pip3 install -r requirements.txt
-  - python3 checkip.py
-
-trigger:
-  branch:
-    exclude:
-    - master
-

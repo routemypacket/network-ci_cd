@@ -28,6 +28,10 @@ steps:
 #  - python batfish_updated.py || echo "Script failed, printing debug info"
 #  - python -m traceback batfish_updated.py
 
+- name: Debug File Structure
+  image: alpine
+  commands:
+    - ls -R /drone/src
 
 - name: Populate Nautobot from sandbox iosXR device
   image: deadtree101/netauto

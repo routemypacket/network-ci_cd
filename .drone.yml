@@ -31,12 +31,13 @@ steps:
 
 - name: Populate Nautobot from sandbox iosXR device
   image: deadtree101/netauto
+  network_mode: host
 #  environment:
 #    MY_PASS:
 #      from_secret: MY_PASS
   commands:
 # - pip3 install -r requirements.txt
-  - python3 /nautobot_code/populate_nautobot_device.py
+  - python3 nautobot_code/populate_nautobot_device.py
 
 
 - name: Check IP Interfaces of sandbox iosXR device

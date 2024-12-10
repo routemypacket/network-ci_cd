@@ -76,3 +76,5 @@ trigger:
 #  - curl -v http://host.docker.internal:9996/v2/version || echo "Connection to host.docker.internal failed"
 #  - curl -v http://172.17.0.1:9996/v2/version || echo "Connection to Docker host IP failed"
       
+
+#test

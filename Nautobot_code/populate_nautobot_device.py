@@ -44,7 +44,7 @@ def update_device_config(device_name, running_config, token, nautobot_url):
         "Authorization": f"Token {token}",
         "Content-Type": "application/json",
     }
-
+    print(f"Headers being sent: {headers}")
     # Prepare the payload to update local_context_data
     payload = {
         "local_config_context_data": {
@@ -53,7 +53,14 @@ def update_device_config(device_name, running_config, token, nautobot_url):
     }
 
     # Send the PATCH request to update the config context
-    response = requests.patch(url, headers=headers, json=payload)
+#    response = requests.patch(url, headers=headers, json=payload)
+
+    response = requests.patch(
+        f"{nautobot_url}/api/dcim/devices/{device_id}/",
+        headers=headers,
+        data=json.dumps(payload),
+    )
+    print(f"API URL: {nautobot_url}/api/dcim/devices/{device_id}/")
 
     if response.status_code == 200:
         print(f"Successfully updated Config Context for device: {device_name}")
@@ -117,6 +124,7 @@ if __name__ == "__main__":
 
     # Push configuration data to the Configuration tab
     if gathered_data:
+
         config_updated = update_device_config(
             nautobot_url=nautobot_url,
             token=token,

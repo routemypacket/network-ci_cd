@@ -121,7 +121,7 @@ if __name__ == "__main__":
             nautobot_url=nautobot_url,
             token=token,
             device_name=device_name,
-            device_config=gathered_data,
+            running_config=gathered_data,
         )
         if not config_updated:
             print(f"Failed to update configuration for device {device_name}.")

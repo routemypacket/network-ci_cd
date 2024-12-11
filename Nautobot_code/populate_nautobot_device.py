@@ -31,7 +31,7 @@ def update_device_config(nautobot_url, token, device_name, device_config):
     headers = {"Authorization": f"Token {token}", "Content-Type": "application/json"}
 
     # Get device ID
-    device_id = get_device_id(device_name, token, nautobot_url)  # Corrected arguments order
+    device_id = get_device_id(device_name, token)  # Corrected arguments order
 
     if not device_id:
         print(f"Device '{device_name}' not found in Nautobot.")

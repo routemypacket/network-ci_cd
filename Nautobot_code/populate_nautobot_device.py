@@ -19,39 +19,49 @@ token = "79c056180ba76e6e39b8cccf4b2ef9e635b15c15"
 nautobot_url = "http://localhost:8081"  # Update with your Nautobot instance URL
 
 
-def update_device_config(nautobot_url, token, device_name, device_config):
+def update_device_config(device_name, running_config, token, nautobot_url):
     """
-    Update the configuration of a device in Nautobot.
+    Update the Config Context (local_context_data) for a device in Nautobot.
 
-    :param nautobot_url: Base URL of the Nautobot instance
-    :param token: Nautobot API token
-    :param device_name: Name of the device in Nautobot
-    :param device_config: Configuration data as a string
+    Args:
+        device_name (str): The name of the device in Nautobot.
+        running_config (str): The running configuration to store.
+        token (str): Nautobot API token.
+        nautobot_url (str): Base URL of Nautobot API.
+
+    Returns:
+        bool: True if the update was successful, False otherwise.
     """
-    headers = {"Authorization": f"Token {token}", "Content-Type": "application/json"}
-
-    # Get device ID
-    device_id = get_device_id(device_name, token)  # Corrected arguments order
-
+    # Get the device ID from Nautobot
+    device_id = get_device_id(device_name, token)
     if not device_id:
         print(f"Device '{device_name}' not found in Nautobot.")
         return False
 
-    # API endpoint for updating device configuration
-    endpoint = f"{nautobot_url}/api/dcim/devices/{device_id}/"
+    # API endpoint for the specific device
+    url = f"{nautobot_url}/dcim/devices/{device_id}/"
+    headers = {
+        "Authorization": f"Token {token}",
+        "Content-Type": "application/json",
+    }
 
-    # Payload with configuration data
-    payload = {"config": device_config}
+    # Prepare the payload to update local_context_data
+    payload = {
+        "local_context_data": {
+            "running_config": running_config
+        }
+    }
 
-    # Make PATCH request to update the configuration
-    response = requests.patch(endpoint, headers=headers, json=payload)
+    # Send the PATCH request to update the config context
+    response = requests.patch(url, headers=headers, json=payload)
 
     if response.status_code == 200:
-        print(f"Configuration updated for device '{device_name}'.")
+        print(f"Successfully updated Config Context for device: {device_name}")
         return True
     else:
-        print(f"Failed to update configuration for device '{device_name}': {response.text}")
+        print(f"Failed to update Config Context: {response.status_code} - {response.text}")
         return False
+
 
 
 

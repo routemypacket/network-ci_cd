@@ -4,21 +4,27 @@ name: Testing Python CI/CD
 
 
 steps:
-#- name: Black Code Format Check
-#  image: deadtree101/netauto
-#  commands:
-#  - black . --check
-#- name: check-python-packages
-#  image: deadtree101/netauto
-#  commands:
-#  - python -m pip list
-
 - name: debug-python-environment
   image: deadtree101/netauto
   network_mode: host
   commands:
     - python --version
     - python -m pip list
+
+
+
+- name: Populate Nautobot from sandbox iosXR device
+  image: deadtree101/netauto
+  network_mode: host
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
+  commands:
+# - pip3 install -r requirements.txt
+  - python3 /drone/src/Nautobot_code/populate_nautobot_device.py
+
+
+
 
 - name: Batfish Prechecks
   image: deadtree101/netauto
@@ -32,16 +38,6 @@ steps:
   image: alpine
   commands:
     - ls -R /drone/src
-
-- name: Populate Nautobot from sandbox iosXR device
-  image: deadtree101/netauto
-  network_mode: host
-#  environment:
-#    MY_PASS:
-#      from_secret: MY_PASS
-  commands:
-# - pip3 install -r requirements.txt
-  - python3 /drone/src/Nautobot_code/populate_nautobot_device.py
 
 
 - name: Check IP Interfaces of sandbox iosXR device
@@ -76,5 +72,12 @@ trigger:
 #  - curl -v http://host.docker.internal:9996/v2/version || echo "Connection to host.docker.internal failed"
 #  - curl -v http://172.17.0.1:9996/v2/version || echo "Connection to Docker host IP failed"
       
-
+#- name: Black Code Format Check
+#  image: deadtree101/netauto
+#  commands:
+#  - black . --check
+#- name: check-python-packages
+#  image: deadtree101/netauto
+#  commands:
+#  - python -m pip list
 #test

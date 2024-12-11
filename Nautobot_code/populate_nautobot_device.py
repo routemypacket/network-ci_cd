@@ -48,7 +48,7 @@ def update_device_config(device_name, running_config, token, nautobot_url):
     # Prepare the payload to update local_context_data
     payload = {
         "local_config_context_data": {
-            "running_config": 'this is a test'
+            "running_config": running_config
         }
     }
 
@@ -117,11 +117,15 @@ if __name__ == "__main__":
 
     # Push configuration data to the Configuration tab
     if gathered_data:
+
+    # Testing with a simple text value for the Config Context
+        test_config_data = {"test_key": "This is a test value"}
+
         config_updated = update_device_config(
             nautobot_url=nautobot_url,
             token=token,
             device_name=device_name,
-            running_config=gathered_data,
+            running_config=test_config_data,
         )
         if not config_updated:
             print(f"Failed to update configuration for device {device_name}.")

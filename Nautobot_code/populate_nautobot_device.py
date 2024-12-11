@@ -48,7 +48,7 @@ def update_device_config(device_name, running_config, token, nautobot_url):
     # Prepare the payload to update local_context_data
     payload = {
         "local_config_context_data": {
-            "running_config": running_config
+            "running_config": 'this is a test'
         }
     }
 

@@ -20,10 +20,7 @@ steps:
 #  - python batfish_updated.py || echo "Script failed, printing debug info"
 #  - python -m traceback batfish_updated.py
 
-- name: Debug File Structure
-  image: alpine
-  commands:
-    - ls -R /drone/src
+
 
 
 - name: Check IP Interfaces of sandbox iosXR device
@@ -83,6 +80,12 @@ trigger:
 #  image: deadtree101/netauto
 #  commands:
 #  - python -m pip list
+
+
+#- name: Debug File Structure
+#  image: alpine
+#  commands:
+#    - ls -R /drone/src
 
 
 #test

@@ -90,22 +90,25 @@ def main():
 
         if config:
             # Use the 'config' variable in your Batfish snapshot
-            snapshot_path = f"{SNAPSHOT_DIR}/{device_name}"
-            bf_session.set_snapshot_dir(snapshot_path)
-            bf_init_snapshot(config, name=device_name, overwrite=True)
-            snapshots[device_name] = snapshot_path  # Store the snapshot path
+            # For example, to create a snapshot:
+            snapshots[device_name] = bf_session.add_snapshot(config, name=device_name)
         else:
             print(f"Could not retrieve config for {device_name}")
 
-    # Initialize snapshot
-    #init_snap = bf_session.init_snapshot(SNAPSHOT_DIR, name=SNAPSHOT_NAME, overwrite=True)
+    # Run Batfish tests for each snapshot
+    for device_name, snapshot in snapshots.items():
+        console.print(f"[bold blue]Testing device: {device_name}[/bold blue]")
+        
+        # Set the snapshot for the current device
+        bf_session.set_snapshot(snapshot.snapshot)
 
-    # Run tests
-    test_duplicate_rtr_ids(bf_session, init_snap)
-    test_bgp_compatibility(bf_session, init_snap)
-    test_ospf_compatibility(bf_session, init_snap)
-    test_bgp_unestablished(bf_session, init_snap)
-    test_undefined_references(bf_session, init_snap)
+        # Run your tests (assuming these functions are defined elsewhere)
+        test_duplicate_rtr_ids(bf_session, init_snap)
+        test_bgp_compatibility(bf_session, init_snap)
+        test_ospf_compatibility(bf_session, init_snap)
+        test_bgp_unestablished(bf_session, init_snap)
+        test_undefined_references(bf_session, init_snap)
+        console.print("\n")  # Add an empty line between devices
 
 if __name__ == "__main__":
     main()

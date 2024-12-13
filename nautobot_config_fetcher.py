@@ -8,8 +8,9 @@ nautobot_token = "79c056180ba76e6e39b8cccf4b2ef9e635b15c15"  # Replace with your
 SNAPSHOT_DIR = "./snapshots"  # Define the directory to store the config files
 
 def get_device_config(device_name):
-    """Retrieves the running configuration from Nautobot, 
-    removes newlines, prints it, and saves it to a file."""
+    """Retrieves the running configuration from Nautobot,
+    replaces literal '\n' with actual newlines, prints it, and saves it to a file.
+    """
 
     try:
         # Get the device ID
@@ -34,16 +35,16 @@ def get_device_config(device_name):
         config = data["local_config_context_data"].get("running_config")
 
         if config:
-            # Remove '\n' characters and print the sorted config
-            config = config.replace("\n", "")
-            print(config)
+            # Replace literal '\n' with actual newline characters
+            config = config.replace("\\n", "\n")
+            print(config)  # Print the config with newlines
 
             # Save the configuration to a file
             if not os.path.exists(SNAPSHOT_DIR):
                 os.makedirs(SNAPSHOT_DIR)
             filepath = os.path.join(SNAPSHOT_DIR, f"{device_name}.cfg")
             with open(filepath, "w") as f:
-                f.write(config)
+                f.write(config)  # Write the config to the file
 
         return config  # Return the config as is
 

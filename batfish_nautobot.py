@@ -66,14 +66,29 @@ def test_undefined_references(session, snap):
         ":green_heart: [bold green]No undefined references found![/bold green] :green_heart:"
     )
 
+def print_ls_snapshots():
+    """Prints the output of the 'ls -l snapshots' command."""
+    try:
+        # Execute the 'ls -l' command on the 'snapshots' directory
+        stream = os.popen("ls -l snapshots")
+        # Read the output from the command
+        output = stream.read()
+        # Print the output
+        print(output)
+    except Exception as e:
+        print(f"Error executing ls command: {e}")
+
 def main():
     """init all the things"""
     NETWORK_NAME = "JBC_NET"
     SNAPSHOT_NAME = "snapshot00"
-    SNAPSHOT_DIR = "/drone/src/snapshots"
+    SNAPSHOT_DIR = "./snapshots"
 
     # Update the configuration files in the snapshots folder
-    update_configs()  
+    update_configs()
+
+    # Print the contents of the snapshots directory
+    print_ls_snapshots()  
 
     bf_session.host = "192.168.0.130"  # Use the verified working address
     bf_session.set_network(NETWORK_NAME)

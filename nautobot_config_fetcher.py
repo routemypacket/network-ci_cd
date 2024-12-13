@@ -1,3 +1,4 @@
+# nautobot_config_fetcher.py
 import os
 import requests
 
@@ -5,7 +6,7 @@ import requests
 nautobot_url = "http://localhost:8081"  # Replace with your Nautobot URL
 nautobot_token = "79c056180ba76e6e39b8cccf4b2ef9e635b15c15"  # Replace with your API token
 
-SNAPSHOT_DIR = "/drone/src/snapshots"  # Define the directory to store the config files
+SNAPSHOT_DIR = "/drone/src/snapshots/configs"  # Updated path to store configs
 
 def get_device_config(device_name):
     """Retrieves the running configuration from Nautobot,
@@ -37,11 +38,11 @@ def get_device_config(device_name):
         if config:
             # Replace literal '\n' with actual newline characters
             config = config.replace("\\n", "\n")
-            #print(config)  # Print the config with newlines
+            print(config)  # Print the config with newlines
 
             # Save the configuration to a file
             if not os.path.exists(SNAPSHOT_DIR):
-                os.makedirs(SNAPSHOT_DIR)  # Create the snapshots directory if it doesn't exist
+                os.makedirs(SNAPSHOT_DIR)  # Create the snapshots/configs directory if it doesn't exist
             filepath = os.path.join(SNAPSHOT_DIR, f"{device_name}.cfg")
             with open(filepath, "w") as f:
                 f.write(config)  # Write the config to the file
@@ -75,8 +76,8 @@ def get_device_id(device_name):
         return None
 
 def update_configs():
-    """Updates the configuration files in the snapshots folder."""
-    device_names = ["wee01-leaf-02", "wee01-leaf-03"]  # Add your device names here
+    """Updates the configuration files in the snapshots/configs folder."""
+    device_names = ["wee01-leaf-01", "wee01-leaf-02"]  # Add your device names here
     for device_name in device_names:
         get_device_config(device_name)
 

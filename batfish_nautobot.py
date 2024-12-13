@@ -1,3 +1,4 @@
+# batfish_nautobot.py
 #!/usr/bin/env python
 
 """Script used to test the network with Batfish"""
@@ -69,8 +70,8 @@ def test_undefined_references(session, snap):
 def print_ls_snapshots():
     """Prints the output of the 'ls -l snapshots' command."""
     try:
-        # Execute the 'ls -l' command on the 'snapshots' directory
-        stream = os.popen("ls -l snapshots")
+        # Execute the 'ls -l' command on the 'snapshots/configs' directory
+        stream = os.popen("ls -l snapshots/configs")
         # Read the output from the command
         output = stream.read()
         # Print the output

@@ -38,7 +38,7 @@ def get_device_config(device_name):
         if config:
             # Replace literal '\n' with actual newline characters
             config = config.replace("\\n", "\n")
-            print(config)  # Print the config with newlines
+            #print(config)  # Print the config with newlines
 
             # Save the configuration to a file
             if not os.path.exists(SNAPSHOT_DIR):

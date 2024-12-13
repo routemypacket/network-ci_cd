@@ -1,4 +1,3 @@
-# nautobot_config_fetcher.py
 import os
 import requests
 
@@ -38,7 +37,7 @@ def get_device_config(device_name):
         if config:
             # Replace literal '\n' with actual newline characters
             config = config.replace("\\n", "\n")
-            #print(config)  # Print the config with newlines
+            print(config)  # Print the config with newlines
 
             # Save the configuration to a file
             if not os.path.exists(SNAPSHOT_DIR):
@@ -77,9 +76,21 @@ def get_device_id(device_name):
 
 def update_configs():
     """Updates the configuration files in the snapshots/configs folder."""
-    device_names = ["wee01-leaf-01", "wee01-leaf-02"]  # Add your device names here
+    device_names = ["wee01-leaf-02", "wee01-leaf-03"]  # Add your device names here
     for device_name in device_names:
         get_device_config(device_name)
+
+def print_ls_snapshots():  # Updated function
+    """Prints the output of the 'ls -l snapshots/configs' command."""
+    try:
+        # Execute the 'ls -l' command on the 'snapshots/configs' directory
+        stream = os.popen("ls -l snapshots/configs")
+        # Read the output from the command
+        output = stream.read()
+        # Print the output
+        print(output)
+    except Exception as e:
+        print(f"Error executing ls command: {e}")
 
 # Call the update_configs function when the script is run
 if __name__ == "__main__":

@@ -1,8 +1,9 @@
-# batfish_nautobot.py
 #!/usr/bin/env python
 
 """Script used to test the network with Batfish"""
+
 import os  # Import the os module
+
 from pybatfish.client.session import Session
 from rich.console import Console
 

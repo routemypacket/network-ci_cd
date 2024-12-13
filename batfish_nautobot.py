@@ -70,7 +70,7 @@ def main():
     """init all the things"""
     NETWORK_NAME = "JBC_NET"
     SNAPSHOT_NAME = "snapshot00"
-    SNAPSHOT_DIR = "./snapshots"
+    SNAPSHOT_DIR = "/drone/src/snapshots"
 
     # Update the configuration files in the snapshots folder
     update_configs()  

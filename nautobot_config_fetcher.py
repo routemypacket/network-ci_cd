@@ -76,7 +76,7 @@ def get_device_id(device_name):
 
 def update_configs():
     """Updates the configuration files in the snapshots folder."""
-    device_names = ["wee01-leaf-01", "wee01-leaf-02"]  # Add your device names here
+    device_names = ["wee01-leaf-02", "wee01-leaf-03"]  # Add your device names here
     for device_name in device_names:
         get_device_config(device_name)
 

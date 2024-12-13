@@ -13,17 +13,6 @@ steps:
 
 
 
-- name: Populate Nautobot from sandbox iosXR device
-  image: deadtree101/netauto
-  network_mode: host
-#  environment:
-#    MY_PASS:
-#      from_secret: MY_PASS
-  commands:
-# - pip3 install -r requirements.txt
-  - python3 /drone/src/Nautobot_code/populate_nautobot_device.py
-
-
 
 
 - name: Batfish Prechecks
@@ -56,7 +45,24 @@ trigger:
 
 
 #    Legacy testing of tasks such as batfish etc:
-  
+
+
+#for reference:
+# Update Nautobot script:
+#- name: Populate Nautobot from sandbox iosXR device
+#  image: deadtree101/netauto
+#  network_mode: host
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
+#  commands:
+## - pip3 install -r requirements.txt
+#  - python3 /drone/src/Nautobot_code/populate_nautobot_device.py
+
+
+
+
+
 #- name: debug-batfish-connectivity
 #  image: alpine/curl
 #  commands:

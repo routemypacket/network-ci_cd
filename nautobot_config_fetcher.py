@@ -5,7 +5,7 @@ import requests
 nautobot_url = "http://localhost:8081"  # Replace with your Nautobot URL
 nautobot_token = "79c056180ba76e6e39b8cccf4b2ef9e635b15c15"  # Replace with your API token
 
-SNAPSHOT_DIR = "./snapshots"  # Define the directory to store the config files
+SNAPSHOT_DIR = "/drone/src/snapshots"  # Define the directory to store the config files
 
 def get_device_config(device_name):
     """Retrieves the running configuration from Nautobot,
@@ -41,7 +41,7 @@ def get_device_config(device_name):
 
             # Save the configuration to a file
             if not os.path.exists(SNAPSHOT_DIR):
-                os.makedirs(SNAPSHOT_DIR)
+                os.makedirs(SNAPSHOT_DIR)  # Create the snapshots directory if it doesn't exist
             filepath = os.path.join(SNAPSHOT_DIR, f"{device_name}.cfg")
             with open(filepath, "w") as f:
                 f.write(config)  # Write the config to the file

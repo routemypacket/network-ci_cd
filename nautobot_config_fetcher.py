@@ -25,7 +25,10 @@ def get_device_config(device_name):
         response.raise_for_status()
 
         data = response.json()
-        config = data["config_context"].get("running_config")
+
+        # Access the config using "local_config_context_data"
+        config = data["local_config_context_data"].get("running_config")
+
         return config  # Return the config as is
 
     except requests.exceptions.RequestException as e:

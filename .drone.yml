@@ -33,7 +33,14 @@ steps:
   commands:
 # - pip3 install -r requirements.txt
   - python3 checkip.py
+  
+webhook:
+  events:
+    - push
+  endpoint: /webhook  # Define the endpoint path
+  secret: your_drone_webhook_secret  # Optional secret for security
 
+trigger:
 trigger:
   branch:
     exclude:

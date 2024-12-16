@@ -14,7 +14,7 @@ device = {
     "password": "Admin_1234!",
 }
 
-token = "79c056180ba76e6e39b8cccf4b2ef9e635b15c15"
+token = "0123456789abcdef0123456789abcdef01234567"
 
 nautobot_url = "http://localhost:8081"  # Update with your Nautobot instance URL
 

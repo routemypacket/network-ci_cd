@@ -24,8 +24,8 @@ steps:
 
 
 
-
-- name: Check IP Interfaces of sandbox iosXR device
+- name: Nornir Deploy 
+#- name: Check IP Interfaces of sandbox iosXR device
   image: deadtree101/netauto
 #  environment:
 #    MY_PASS:

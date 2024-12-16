@@ -9,4 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the Event Payload
-        run: echo "Payload: ${{ toJson(github.event.client_payload) }}"
+        run: |
+          echo "Payload: ${{ toJson(github.event.client_payload) }}"

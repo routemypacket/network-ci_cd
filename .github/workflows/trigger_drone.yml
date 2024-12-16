@@ -1,0 +1,28 @@
+name: Trigger Drone Pipeline
+
+on:
+  repository_dispatch:
+    types: [nautobot_event]
+
+jobs:
+  trigger_drone:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Modify or create a file
+      - name: Modify File to Trigger Drone
+        run: |
+          echo "Triggered by Nautobot webhook on $(date)" >> trigger/drone_trigger.txt
+
+      # Step 3: Commit and push the change
+      - name: Commit and Push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add trigger/drone_trigger.txt
+          git commit -m "Nautobot webhook triggered Drone"
+          git push origin main

@@ -2,7 +2,7 @@ import os
 import requests
 
 # --- Nautobot API settings ---
-nautobot_url = "http://localhost:8080"  # Replace with your Nautobot URL
+nautobot_url = "http://localhost:8000"  # Replace with your Nautobot URL
 nautobot_token = "0123456789abcdef0123456789abcdef01234567"  # Replace with your API token
 
 SNAPSHOT_DIR = "/drone/src/snapshots/configs"  # Updated path to store configs

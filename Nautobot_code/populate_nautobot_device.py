@@ -16,7 +16,7 @@ device = {
 
 token = "0123456789abcdef0123456789abcdef01234567"
 
-nautobot_url = "http://localhost:8080"  # Update with your Nautobot instance URL
+nautobot_url = "http://localhost:8000"  # Update with your Nautobot instance URL
 
 
 def update_device_config(device_name, running_config, token, nautobot_url):

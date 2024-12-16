@@ -2,7 +2,7 @@ name: Nautobot Trigger
 
 on:
   repository_dispatch:
-    types: [nautobot_event]
+#    types: [nautobot_event]
 
 jobs:
   log_event:

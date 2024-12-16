@@ -10,4 +10,3 @@ jobs:
     steps:
       - name: Print the Event Payload
         run: echo "Payload: ${{ toJson(github.event.client_payload) }}"
-        #test

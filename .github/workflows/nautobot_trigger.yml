@@ -1,13 +1,13 @@
-name: Nautobot Trigger
+#name: Nautobot Trigger
 
-on:
-  repository_dispatch:
+#on:
+#  repository_dispatch:
 #    types: [nautobot_event]
 
-jobs:
-  log_event:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print the Event Payload
-        run: |
-          echo "Payload: ${{ toJson(github.event.client_payload) }}"
+#jobs:
+#  log_event:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Print the Event Payload
+#        run: |
+#          echo "Payload: ${{ toJson(github.event.client_payload) }}"

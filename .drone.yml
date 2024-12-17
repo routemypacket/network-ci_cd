@@ -34,22 +34,16 @@ steps:
   - python build.py --dry_run
 
 
-- name: Nornir Deploy 
+#- name: Nornir Deploy 
 #- name: Check IP Interfaces of sandbox iosXR device
-  image: deadtree101/netauto
+#  image: deadtree101/netauto
 #  environment:
 #    MY_PASS:
 #      from_secret: MY_PASS
-  commands:
+#  commands:
 # - pip3 install -r requirements.txt
-  - python3 checkip.py
+#  - python3 checkip.py
   
-webhook:
-  events:
-    - push
-  endpoint: /webhook  # Define the endpoint path
-  secret: your_drone_webhook_secret  # Optional secret for security
-
 trigger:
 trigger:
   branch:

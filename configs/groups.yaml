@@ -1,6 +1,6 @@
 ---
 nxos_devices:
-  platform: nxos
+  platform: nxos_ssh
   username: "cisco"
   password: "cisco"
   connection_options:

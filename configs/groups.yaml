@@ -5,4 +5,4 @@ nxos:
   password: "cisco"
   connection_options:
     napalm:
-      platform: nxos
+      platform: nxos_ssh

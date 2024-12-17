@@ -10,6 +10,8 @@ steps:
   commands:
     - python --version
     - python -m pip list
+    - nc -zv 10.10.20.177 22
+    - nc -zv 10.10.20.178 22
 
 
 - name: Batfish Prechecks

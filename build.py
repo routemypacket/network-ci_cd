@@ -8,6 +8,8 @@ from nornir_napalm.plugins.tasks import napalm_configure
 from nornir_utils.plugins.functions import print_result
 from tools import nornir_set_creds
 
+# Enable debug logging
+logging.basicConfig(level=logging.DEBUG)
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -22,7 +24,8 @@ args = parser.parse_args()
 
 def deploy_network(task):
     """Configures network with NAPALM"""
-    task1_result = task.run(
+    logging.debug(f"Running configuration for {task.host.name}")
+    task.run(
         name=f"Configuring {task.host.name}!",
         task=napalm_configure,
         filename=f"./snapshots/configs/{task.host.name}.txt",

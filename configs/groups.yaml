@@ -1,5 +1,5 @@
 ---
-nxos_devices:
+nxos:
   platform: nxos_ssh
   username: "cisco"
   password: "cisco"

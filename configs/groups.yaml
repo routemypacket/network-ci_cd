@@ -1,3 +1,8 @@
 ---
-ios:
-  platform: ios
+nxos_devices:
+  platform: nxos
+  username: "cisco"
+  password: "cisco"
+  connection_options:
+    napalm:
+      platform: nxos

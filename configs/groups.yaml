@@ -6,3 +6,7 @@ nxos:
   connection_options:
     napalm:
       platform: nxos_ssh
+    ssh:
+      extras:
+        look_for_keys: False
+        allow_agent: False

@@ -22,6 +22,16 @@ steps:
 #  - python batfish_updated.py || echo "Script failed, printing debug info"
 #  - python -m traceback batfish_updated.py
 
+- name: NAPALM connection t est
+  image: deadtree101/netauto
+  environment:
+    PASSWORD:
+      from_secret: PASSWORD
+    USER:
+      from_secret: USER
+  commands:
+  - python napalm_connection_test.py
+
 
 - name: Precheck Configuration Diff
   image: deadtree101/netauto

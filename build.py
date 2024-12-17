@@ -25,6 +25,18 @@ args = parser.parse_args()
 
 def deploy_network(task):
     """Configures network with NAPALM"""
+    try:
+        task.run(
+            name=f"Configuring {task.host.name}!",
+            task=napalm_configure,
+            filename=f"./snapshots/configs/{task.host.name}.txt",
+            dry_run=args.dry,
+            replace=True,
+        )
+    except Exception as e:
+        print(f"Failed to connect to {task.host}: {str(e)}")
+        raise   
+
     logging.debug(f"Running configuration for {task.host.name}")
     task.run(
         name=f"Configuring {task.host.name}!",

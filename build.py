@@ -3,6 +3,7 @@
 """Script used to configure the network"""
 
 import argparse
+import logging
 from nornir import InitNornir
 from nornir_napalm.plugins.tasks import napalm_configure
 from nornir_utils.plugins.functions import print_result

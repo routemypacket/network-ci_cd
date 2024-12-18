@@ -1,10 +1,16 @@
 ---
+
 SW1:
-  hostname: 10.10.20.177
+  hostname: 131.226.217.151
   groups:
     - nxos
 
-SW2:
-  hostname: 10.10.20.178
-  groups:
-    - nxos
+#SW1:
+#  hostname: 10.10.20.177
+#  groups:
+#    - nxos
+
+#SW2:
+#  hostname: 10.10.20.178
+#  groups:
+#    - nxos

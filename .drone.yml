@@ -12,16 +12,6 @@ steps:
     - python -m pip list
 
 
-- name: Batfish Prechecks
-  image: deadtree101/netauto
-  network_mode: host
-  commands:
-  - pwd # check the current directory
-  #- ls -l /drone/src/snapshots   # List the contents of the snapshots folder
-  - python batfish_nautobot.py
-#  - python batfish_updated.py || echo "Script failed, printing debug info"
-#  - python -m traceback batfish_updated.py
-
 - name: NAPALM connection t est
   image: deadtree101/netauto
   environment:
@@ -42,6 +32,17 @@ steps:
       from_secret: USER
   commands:
   - python build.py --dry_run
+
+
+- name: Batfish Prechecks
+  image: deadtree101/netauto
+  network_mode: host
+  commands:
+  - pwd # check the current directory
+  #- ls -l /drone/src/snapshots   # List the contents of the snapshots folder
+  - python batfish_nautobot.py
+#  - python batfish_updated.py || echo "Script failed, printing debug info"
+#  - python -m traceback batfish_updated.py
 
 
 #- name: Nornir Deploy 

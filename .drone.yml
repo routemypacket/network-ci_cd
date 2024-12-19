@@ -25,7 +25,6 @@ steps:
 
 
 - name: Deploy Configuration into the network 
-- name: Check IP Interfaces of sandbox iosXR device
   image: deadtree101/netauto
   environment:
     MY_PASS:
@@ -34,7 +33,6 @@ steps:
   - python3 checkip.py
 
 - name: POST CHECKS
-- name: Check IP Interfaces of sandbox iosXR device
   image: deadtree101/netauto
   environment:
     MY_PASS:

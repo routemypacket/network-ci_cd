@@ -12,28 +12,6 @@ steps:
     - python -m pip list
 
 
-- name: NAPALM connection t est
-  image: deadtree101/netauto
-  environment:
-    PASSWORD:
-      from_secret: PASSWORD
-    USER:
-      from_secret: USER
-  commands:
-  - python napalm_connection_test.py
-
-
-- name: Precheck Configuration Diff
-  image: deadtree101/netauto
-  environment:
-    PASSWORD:
-      from_secret: PASSWORD
-    USER:
-      from_secret: USER
-  commands:
-  - python build.py --dry_run
-
-
 - name: Batfish Prechecks
   image: deadtree101/netauto
   network_mode: host
@@ -45,16 +23,26 @@ steps:
 #  - python -m traceback batfish_updated.py
 
 
-#- name: Nornir Deploy 
-#- name: Check IP Interfaces of sandbox iosXR device
-#  image: deadtree101/netauto
-#  environment:
-#    MY_PASS:
-#      from_secret: MY_PASS
-#  commands:
-# - pip3 install -r requirements.txt
-#  - python3 checkip.py
-  
+
+- name: Deploy Configuration into the network 
+- name: Check IP Interfaces of sandbox iosXR device
+  image: deadtree101/netauto
+  environment:
+    MY_PASS:
+      from_secret: MY_PASS
+  commands:
+  - python3 checkip.py
+
+- name: POST CHECKS
+- name: Check IP Interfaces of sandbox iosXR device
+  image: deadtree101/netauto
+  environment:
+    MY_PASS:
+      from_secret: MY_PASS
+  commands:
+  - python3 checkip.py
+
+
 trigger:
 trigger:
   branch:
@@ -66,6 +54,32 @@ trigger:
 
 
 #for reference:
+
+
+#- name: Precheck Configuration Diff
+#  image: deadtree101/netauto
+#  environment:
+#    PASSWORD:
+#      from_secret: PASSWORD
+#    USER:
+#      from_secret: USER
+#  commands:
+#  - python build.py --dry_run
+
+
+
+#- name: NAPALM connection test
+#  image: deadtree101/netauto
+#  environment:
+#    PASSWORD:
+#      from_secret: PASSWORD
+#    USER:
+#      from_secret: USER
+#  commands:
+#  - python napalm_connection_test.py
+
+
+
 # Update Nautobot script:
 #- name: Populate Nautobot from sandbox iosXR device
 #  image: deadtree101/netauto

@@ -92,7 +92,7 @@ def main():
     # Print the contents of the snapshots directory
     print_ls_snapshots()  
 
-    bf_session.host = "192.168.0.150"  # Use the verified working address
+    bf_session.host = "192.168.0.93"  # Use the verified working address
     bf_session.set_network(NETWORK_NAME)
 
     # Initialize snapshot

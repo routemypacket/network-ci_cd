@@ -29,7 +29,7 @@ def test_duplicate_rtr_ids(session, snap):
     )
 
 def test_bgp_compatibility(session, snap):
-    """Testing for incompatible BGP sessions"""curl -v http://192.168.0.44:9996/v2/version || echo "Batfish server unreachable"
+    """Testing for incompatible BGP sessions"""
     console.print(
         ":white_exclamation_mark: [bold yellow]Testing for incompatible BGP sessions[/bold yellow] :white_exclamation_mark:"
     )

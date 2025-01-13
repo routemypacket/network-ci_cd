@@ -94,6 +94,7 @@ def main():
     # Initialize Batfish session
     bf_session = Session()
     bf_session.host = "192.168.0.44"  # Use the verified working address
+    print(f"Batfish session host is set to: {bf_session.host}")
     bf_session.set_network(NETWORK_NAME)
 
 

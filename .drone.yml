@@ -11,8 +11,6 @@ steps:
     - python --version
     - python -m pip list
 
-
-
 - name: debug-batfish-connectivity
   image: alpine/curl
   commands:
@@ -25,7 +23,7 @@ steps:
   network_mode: host
   commands:
   - pwd # check the current directory
-  #- ls -l /drone/src/snapshots   # List the contents of the snapshots folder
+  - ls -l /drone/src/snapshots   # List the contents of the snapshots folder
   - python batfish_nautobot.py
 #  - python batfish_updated.py || echo "Script failed, printing debug info"
 #  - python -m traceback batfish_updated.py

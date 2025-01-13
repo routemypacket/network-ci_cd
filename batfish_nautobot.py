@@ -91,12 +91,12 @@ def main():
     # Print the contents of the snapshots directory
     print_ls_snapshots()  
 
-
+    # Initialize Batfish session
+    bf_session = Session()
     bf_session.host = "192.168.0.44"  # Use the verified working address
     bf_session.set_network(NETWORK_NAME)
 
-    # Initialize Batfish session
-    bf_session = Session()
+
     
     # Initialize snapshot
     init_snap = bf_session.init_snapshot(SNAPSHOT_DIR, name=SNAPSHOT_NAME, overwrite=True)

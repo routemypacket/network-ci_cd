@@ -12,8 +12,7 @@ from nautobot_config_fetcher import update_configs
 
 console = Console(color_system="truecolor")
 
-# Initialize Batfish session
-bf_session = Session()
+
 
 def test_duplicate_rtr_ids(session, snap):
     """Testing for duplicate router IDs"""
@@ -92,6 +91,8 @@ def main():
     # Print the contents of the snapshots directory
     print_ls_snapshots()  
 
+# Initialize Batfish session
+    bf_session = Session()
     bf_session.host = "192.168.0.44"  # Use the verified working address
     bf_session.set_network(NETWORK_NAME)
 

@@ -16,7 +16,7 @@ steps:
   commands:
    - ip addr
    - ip route
-   - curl -v http://192.168.0.44:9996/v2/version || echo "Batfish server unreachable"
+#   - curl -v http://192.168.0.44:9996/v2/version || echo "Batfish server unreachable"
   
 - name: Batfish Prechecks
   image: deadtree101/netauto
